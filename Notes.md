@@ -10,8 +10,8 @@ Ajout des Leds de ``pins_all.tcl`` dans ``pins.tcl``
 3) Blue : 5 bits
 
 $$\text{red}\longrightarrow \text{red}*30/100$$
-$$\text{green}\longrightarrow \text{green}*59/10$$
-$$\text{blue}\longrightarrow \text{blue}*11/10$$
+$$\text{green}\longrightarrow \text{green}*59/100$$
+$$\text{blue}\longrightarrow \text{blue}*11/100$$
 
 1) Red : 10 bits
 2) Green :  12 bits
@@ -21,4 +21,15 @@ Total : 13 bits
 
 Total / 100 : 6 bits
 
+### Optimisation
+
+Avec le script python on trouve :
+
+```
+gray =  (
+        (rgb>>RED_SHIFT)*338 +
+        ((rgb>>GREEN_SHIFT)&0x3F)*573 +
+        (rgb&0x1F)*113
+        )>>10
+```
 
