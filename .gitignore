@@ -22,3 +22,4 @@ hardware/quartus_project/base_system/*
 *.map.smsg
 *.map.summary
 hardware/quartus_project/mse_demo.qws
+.vscode/settings.json
