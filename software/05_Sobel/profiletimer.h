@@ -1,9 +1,9 @@
 #ifndef PROFILE_TIMER_H
 #define PROFILE_TIMER_H
 
-#include <system.h>
-#include <io.h>
 #include <stdbool.h>
+#include "sys/alt_timestamp.h"
+#include "alt_types.h"
 
 #define TIMER_STATUS_REGISTER 0
 #define TIMER_CONTROL_REGISTER 1<<2
@@ -21,15 +21,23 @@
 #define CLOCK_PERIOD_MS 0.00002
 
 
-extern unsigned long profileTimerValue;
-#define AVERAGE_VALUES 5
-extern int averageIndex;
-extern double profileTimerValues[AVERAGE_VALUES];
+#define TIMERS_COUNT 5
 
-void startProfileTimer();
-void stopProfileTimer();
-double profileTimerms(); // Returns the timer value in ms
-void printProfileTimer();
+#define TIMER_LOOP 0
+#define TIMER_CONV_GRAYSCALE 1
+#define TIMER_SOBEL_X 2
+#define TIMER_SOBEL_Y 3
+#define TIMER_SOBEL_THRESHOLD 4
+
+extern alt_u32 profileTimerStartValue[TIMERS_COUNT];
+#define AVERAGE_VALUES 5
+extern int averageIndex[TIMERS_COUNT];
+extern alt_u32 profileTimerValues[TIMERS_COUNT][AVERAGE_VALUES];
+
+void startProfileTimer(int index);
+void stopProfileTimer(int index);
+double profileTimerms(int index); // Returns the timer value in ms
+void printProfileTimers();
 
 
 #endif //PROFILE_TIMER_H
