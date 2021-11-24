@@ -90,7 +90,9 @@ int main() {
                         stopProfileTimer(TIMER_CONV_GRAYSCALE);
                         grayscale = get_grayscale_picture();
                         startProfileTimer(TIMER_SOBEL_X);
+#if INLINING < 2
                         sobel_x(grayscale);
+#endif
                         stopProfileTimer(TIMER_SOBEL_X);
                         startProfileTimer(TIMER_SOBEL_Y);
                         sobel_y_with_rgb(grayscale);
@@ -112,6 +114,7 @@ int main() {
 
                         grayscale = get_grayscale_picture();
 
+#if INLINING < 2
                         startProfileTimer(TIMER_SOBEL_X);
                         sobel_x(grayscale);
                         stopProfileTimer(TIMER_SOBEL_X);
@@ -123,6 +126,12 @@ int main() {
                         startProfileTimer(TIMER_SOBEL_THRESHOLD);
                         sobel_threshold(128);
                         stopProfileTimer(TIMER_SOBEL_THRESHOLD);
+#else
+                        startProfileTimer(TIMER_SOBEL_X);
+                        sobel_complete(grayscale, 128);
+                        stopProfileTimer(TIMER_SOBEL_X);
+#endif
+
                         grayscale = GetSobelResult();
                         transfer_LCD_with_dma(&grayscale[16520],
                                               cam_get_xsize() >> 1,
