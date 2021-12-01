@@ -33,3 +33,15 @@ gray =  (
         )>>10
 ```
 
+Pour activer le cache, on clic droit sur Nios, puis memory/cache et on mets 32kbyte de mémoire pour data
+
+
+
+### 01.12.2021 : Ajout de fonctions custom
+
+
+![picture 1](images/9ed172278ac21633001ef7db2ca85cb36d822efbd9ca2a20ce63a2f04b055293.png)  
+
+![picture 2](images/3b47f5136f4bf12891893a114921968fcfb8834dd1f4b911b0c8e26274a3b8d4.png)  
+
+
