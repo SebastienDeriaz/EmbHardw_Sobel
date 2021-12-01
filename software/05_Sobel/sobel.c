@@ -144,7 +144,7 @@ void sobel_y(unsigned char *source) {
 }
 #else
 void sobel_complete(unsigned char *src, short threshold) {
-    int x, y, z, arrayindex;
+    int x, y, z;
     short result_x, result_y;
     short sum, value;
 #if INLINING == 2
@@ -183,7 +183,7 @@ void sobel_complete(unsigned char *src, short threshold) {
         }
     }
 #else
-    for (z = 0; z < (sobel_height - 2) * (sobel_height - 2); z++) {
+    for (z = 0; z < (sobel_height - 2) * (sobel_width - 2); z++) {
         result_x = 0;
         result_y = 0;
 #if INLINING == 3
@@ -228,14 +228,45 @@ void sobel_complete(unsigned char *src, short threshold) {
         result_y += gy_array[2][0] * src[z + 2 * sobel_width];
         result_y += gy_array[2][1] * src[z + 2 * sobel_width + 1];
         result_y += gy_array[2][2] * src[z + 2 * sobel_width + 2];
+#elif INLINING == 5
+        // x
+        const char gx_array[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
+        const char gy_array[3][3] = {{1, 2, 1}, {0, 0, 0}, {-1, -2, -1}};
+
+        unsigned char *offset = &src[z];
+        unsigned int sobel_width_2 = 2*sobel_width;
+        //result_x += gx_array[0][0] * offset[0];
+        result_x -= offset[0];
+        //result_x += gx_array[0][2] * offset[2];
+        result_x += offset[2];
+        //result_x += gx_array[1][0] * offset[sobel_width];
+        result_x -= (unsigned short)(offset[sobel_width]) << 1;
+        //result_x += gx_array[1][2] * offset[sobel_width + 2];
+        result_x += (unsigned short)(offset[sobel_width+2]) << 1;
+        //result_x += gx_array[2][0] * offset[2 * sobel_width];
+        result_x -= offset[sobel_width_2];
+        //result_x += gx_array[2][2] * offset[2 * sobel_width + 2];
+        result_x += offset[sobel_width_2+2];
+        // y
+        //result_y += gy_array[0][0] * offset[0];
+        result_y += offset[0];
+        //result_y += gy_array[0][1] * offset[1];
+        result_y += (unsigned short)(offset[1]) << 1;
+        //result_y += gy_array[0][2] * offset[2];
+        result_y += offset[2];
+        //result_y += gy_array[2][0] * offset[2 * sobel_width];
+        result_y -= offset[sobel_width_2];
+        //result_y += gy_array[2][1] * offset[2 * sobel_width + 1];
+        result_y -= (unsigned short)(offset[sobel_width_2 + 1]) << 1;
+        //result_y += gy_array[2][2] * offset[2 * sobel_width + 2];
+        result_y -= offset[sobel_width_2+2];
 #endif
 
-        arrayindex = z;
         value = result_x;
         sum = (value < 0) ? -value : value;
         value = result_y;
         sum += (value < 0) ? -value : value;
-        sobel_result[arrayindex] = (sum > threshold) ? 0xFF : 0;
+        sobel_result[z] = (sum > threshold) ? 0xFF : 0;
     }
 #endif
 }

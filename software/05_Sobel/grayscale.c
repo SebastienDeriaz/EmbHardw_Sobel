@@ -26,7 +26,7 @@ void conv_grayscale(void *picture, int width, int height) {
     for (y = 0; y < height; y++) {
         for (x = 0; x < width; x++) {
             rgb = pixels[y * width + x];
-            
+
 #if GRAYSCALE_VERSION == 0
             gray = (((rgb >> 11) & 0x1F) << 3) * 21;  // red part
             gray += (((rgb >> 5) & 0x3F) << 2) * 72;  // green part
@@ -48,8 +48,6 @@ void conv_grayscale(void *picture, int width, int height) {
             gray += (rgb << 4) & 0x7E00;  // green
             gray += (rgb << 8) & 0x1F00;  // blue
             gray = gray >> 8;
-#else
-
 #endif
             IOWR_8DIRECT(grayscale_array, y * width + x, gray);
         }
