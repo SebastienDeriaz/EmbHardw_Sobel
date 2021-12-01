@@ -25,7 +25,7 @@ Total / 100 : 6 bits
 
 Avec le script python on trouve :
 
-```
+```C
 gray =  (
         (rgb>>RED_SHIFT)*338 +
         ((rgb>>GREEN_SHIFT)&0x3F)*573 +

@@ -1,0 +1,1 @@
+#define GRAYSCALE_VERSION 3
