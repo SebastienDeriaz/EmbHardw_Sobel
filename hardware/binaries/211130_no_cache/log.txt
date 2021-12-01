@@ -1,0 +1,204 @@
+*******************************************************************
+Running Quartus Prime Timing Analyzer
+    Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Processing started: Tue Nov 30 16:03:43 2021
+*******************************************************************
+The Quartus Prime Shell supports all TCL commands in addition
+to Quartus Prime Tcl commands. All unrecognized commands are
+assumed to be external and are run using Tcl's "exec"
+command.
+- Type "exit" to exit.
+- Type "help" to view a list of Quartus Prime Tcl packages.
+- Type "help <package name>" to view a list of Tcl commands
+  available for the specified Quartus Prime Tcl package.
+- Type "help -tcl" to get an overview on Quartus Prime Tcl usages.
+*******************************************************************
+project_open -force "D:/Ecole/HES-SO/Cours/EmbHardw/Labos/EmbHardw_Sobel/hardware/quartus_project/mse_demo.qpf" -revision mse_demo
+create_timing_netlist -model slow
+Detected changes in source files.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/base_system.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/parallelport_32.vhd has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_avalon_sc_fifo.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_avalon_st_clock_crosser.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_avalon_st_handshake_clock_crosser.sdc has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_avalon_st_handshake_clock_crosser.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_avalon_st_pipeline_base.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_avalon_st_pipeline_stage.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_default_burst_converter.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_incr_burst_converter.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_merlin_address_alignment.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_merlin_arbitrator.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_merlin_burst_adapter.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_merlin_burst_adapter_13_1.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_merlin_burst_adapter_new.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_merlin_burst_adapter_uncmpr.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_merlin_burst_uncompressor.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_merlin_master_agent.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_merlin_master_translator.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_merlin_reorder_memory.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_merlin_slave_agent.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_merlin_slave_translator.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_merlin_traffic_limiter.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_merlin_width_adapter.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_reset_controller.sdc has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_reset_controller.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_reset_synchronizer.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_std_synchronizer_nocut.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_wrap_burst_converter.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_profiletimer.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_altpll_0.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_irq_mapper.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_jtag_uart.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0_avalon_st_adapter.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0_avalon_st_adapter_005.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0_avalon_st_adapter_005_error_adapter_0.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0_avalon_st_adapter_error_adapter_0.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0_cmd_demux.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0_cmd_demux_001.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0_cmd_demux_002.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0_cmd_mux.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0_cmd_mux_001.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0_cmd_mux_005.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0_router.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0_router_001.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0_router_002.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0_router_005.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0_router_006.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0_router_010.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0_rsp_demux.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0_rsp_demux_005.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0_rsp_mux.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0_rsp_mux_001.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_mm_interconnect_0_rsp_mux_002.sv has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_nios2_gen2_0.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_nios2_gen2_0_cpu.sdc has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_nios2_gen2_0_cpu.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_nios2_gen2_0_cpu_debug_slave_sysclk.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_nios2_gen2_0_cpu_debug_slave_tck.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_nios2_gen2_0_cpu_debug_slave_wrapper.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_nios2_gen2_0_cpu_mult_cell.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_nios2_gen2_0_cpu_test_bench.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_pio_0.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_sdram_ctrl.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_sysid.v has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/cam_dma_behaviour.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/cam_dma_ctrl_behaviour.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/cam_dma_ctrl_entity.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/cam_dma_entity.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/delay_line_behavior.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/delay_line_entity.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/dma_controller_behavior.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/dma_controller_entity.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/frame_interpreter_behavior.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/frame_interpreter_entity.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/i2c_autodetect_behavior.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/i2c_autodetect_entity.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/i2c_avalon_slave_behavior.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/i2c_avalon_slave_entity.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/i2c_cntrl_behavior.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/i2c_cntrl_entity.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/i2c_data_behavior.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/i2c_data_entity.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/i2c_start_stop_behavior.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/i2c_start_stop_entity.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/lcd_dma_behavior.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/lcd_dma_entity.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/pixel_formatter_behavior.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/pixel_formatter_entity.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/pixel_interface_behavior.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/pixel_interface_entity.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/send_receive_if_behavior.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/send_receive_if_entity.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/synchroflop_behavior.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/synchroflop_entity.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/vga_behavior.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/vga_dma_behavior.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/vga_dma_cntrl_behavior.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/vga_dma_cntrl_entity.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/vga_dma_entity.vhdl has changed.
+    Source file: d:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/vga_entity.vhdl has changed.
+Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Parallel compilation is enabled and will use 4 of the 4 processors detected
+Low junction temperature is 0 degrees C
+High junction temperature is 85 degrees C
+read_sdc
+Evaluating HDL-embedded SDC commands
+    Entity GHVD5181
+        set_disable_timing [get_cells -hierarchical QXXQ6833_0]
+        set_disable_timing [get_cells -hierarchical JEQQ5299_0]
+        set_disable_timing [get_cells -hierarchical JEQQ5299_1]
+        set_disable_timing [get_cells -hierarchical JEQQ5299_2]
+        set_disable_timing [get_cells -hierarchical JEQQ5299_3]
+        set_disable_timing [get_cells -hierarchical JEQQ5299_4]
+        set_disable_timing [get_cells -hierarchical JEQQ5299_5]
+        set_disable_timing [get_cells -hierarchical JEQQ5299_6]
+        set_disable_timing [get_cells -hierarchical JEQQ5299_7]
+        set_disable_timing [get_cells -hierarchical BITP7563_0]
+    Entity alt_jtag_atlantic
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|jupdate}] -to [get_registers {*|alt_jtag_atlantic:*|jupdate1*}] 
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|rdata[*]}] -to [get_registers {*|alt_jtag_atlantic*|td_shift[*]}]
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|rdata[*]}] -to [get_registers {*|alt_jtag_atlantic*|td_shift[*]}]
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|rdata[*]}] -to [get_registers {*|alt_jtag_atlantic*|td_shift[*]}]
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|rdata[*]}] -to [get_registers {*|alt_jtag_atlantic*|td_shift[*]}]
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|rdata[*]}] -to [get_registers {*|alt_jtag_atlantic*|td_shift[*]}]
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|rdata[*]}] -to [get_registers {*|alt_jtag_atlantic*|td_shift[*]}]
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|rdata[*]}] -to [get_registers {*|alt_jtag_atlantic*|td_shift[*]}]
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|rdata[*]}] -to [get_registers {*|alt_jtag_atlantic*|td_shift[*]}]
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|read}] -to [get_registers {*|alt_jtag_atlantic:*|read1*}] 
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|read_req}]
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|rvalid}] -to [get_registers {*|alt_jtag_atlantic*|td_shift[*]}]
+        set_false_path -from [get_registers {*|t_dav}] -to [get_registers {*|alt_jtag_atlantic:*|tck_t_dav}]
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|user_saw_rvalid}] -to [get_registers {*|alt_jtag_atlantic:*|rvalid0*}]
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|wdata[*]}] -to [get_registers {*}]
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|wdata[*]}] -to [get_registers {*}]
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|wdata[*]}] -to [get_registers {*}]
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|wdata[*]}] -to [get_registers {*}]
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|wdata[*]}] -to [get_registers {*}]
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|wdata[*]}] -to [get_registers {*}]
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|wdata[*]}] -to [get_registers {*}]
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|wdata[*]}] -to [get_registers {*}]
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|write}] -to [get_registers {*|alt_jtag_atlantic:*|write1*}] 
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|write_stalled}] -to [get_registers {*|alt_jtag_atlantic:*|t_ena*}]
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|write_stalled}] -to [get_registers {*|alt_jtag_atlantic:*|t_pause*}]
+        set_false_path -from [get_registers {*|alt_jtag_atlantic:*|write_valid}]
+    Entity altera_std_synchronizer
+        set_false_path -to [get_keepers {*altera_std_synchronizer:*|din_s1}]
+    Entity pzdyqx_impl
+        set_false_path -from [get_keepers {altera_reserved_tdi}] -to [get_keepers {pzdyqx*}]
+    Entity sld_hub
+        create_clock -name altera_reserved_tck [get_ports {altera_reserved_tck}] -period 10MHz   
+        set_clock_groups -asynchronous -group {altera_reserved_tck}
+Reading SDC File: 'constraints.sdc'
+Synopsys Design Constraints File file not found: 'd:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_avalon_st_handshake_clock_crosser.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Synopsys Design Constraints File file not found: 'd:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/altera_reset_controller.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Synopsys Design Constraints File file not found: 'd:/ecole/hes-so/cours/embhardw/labos/05_camera/hardware/quartus_project/db/ip/base_system/submodules/base_system_nios2_gen2_0_cpu.sdc'. A Synopsys Design Constraints File is required by the Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+update_timing_netlist
+PLL cross checking found inconsistent PLL clock settings:
+    Node: inst|altpll_0|sd1|pll7|clk[0] was found missing 1 generated clock that corresponds to a base clock with a period of: 20.000
+    Node: inst|altpll_0|sd1|pll7|clk[1] was found missing 1 generated clock that corresponds to a base clock with a period of: 20.000
+    Node: inst|altpll_0|sd1|pll7|clk[2] was found missing 1 generated clock that corresponds to a base clock with a period of: 20.000
+    Node: inst|altpll_0|sd1|pll7|clk[3] was found missing 1 generated clock that corresponds to a base clock with a period of: 20.000
+    Node: inst|altpll_0|sd1|pll7|clk[4] was found missing 1 generated clock that corresponds to a base clock with a period of: 20.000
+The following clock transfers have no clock uncertainty assignment. For more accurate results, apply clock uncertainty assignments or use the derive_clock_uncertainty command.
+    From altera_reserved_tck (Rise) to altera_reserved_tck (Rise) (setup and hold)
+    From altera_reserved_tck (Rise) to altera_reserved_tck (Fall) (setup and hold)
+    From altera_reserved_tck (Fall) to altera_reserved_tck (Fall) (setup and hold)
+    From 50MHzClk (Rise) to 50MHzClk (Rise) (setup and hold)
+    From CAM_PCLK (Rise) to CAM_PCLK (Rise) (setup and hold)
+report_clocks -panel_name "Clocks Summary"
+report_clocks -panel_name "Clock Summary Tree" -tree
+check_timing -panel_name "Check Timing"
+report_partitions -panel_name "Partition Timing Report"
+report_clocks -panel_name "Clocks Summary"
+-panel_name "Fmax Summary"
+invalid command name "-panel_name"
+report_clock_fmax_summary
+Fmax Summary
+                   Restricted
+            Fmax         Fmax      Clock Note
+    ============ ============ ========== =====================
+       89.54 MHz    89.54 MHz   50MHzClk   
+       97.22 MHz    97.22 MHz altera_reserved_tck   
+      192.34 MHz   192.34 MHz   CAM_PCLK   
+
