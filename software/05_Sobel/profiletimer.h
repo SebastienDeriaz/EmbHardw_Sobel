@@ -19,6 +19,7 @@
 #define TIMER_START 1<<2
 
 #define CLOCK_PERIOD_MS 0.00002
+#define TIMER_PERIOD_MS 0.000001
 
 
 #define TIMERS_COUNT 5

@@ -1,5 +1,6 @@
 #include "profiletimer.h"
 
+
 int averageIndex[TIMERS_COUNT] = {0};
 alt_u32 profileTimerValues[TIMERS_COUNT][AVERAGE_VALUES] = {0};
 alt_u32 profileTimerStartValue[TIMERS_COUNT] = {0};
@@ -9,6 +10,7 @@ void startProfileTimer(int index) {
         alt_timestamp_start();
     }
     // Stop the timer, reset, reset the status register, then start
+
     profileTimerStartValue[index] = alt_timestamp();
 }
 
@@ -23,6 +25,7 @@ void stopProfileTimer(int index) {
 
 double profileTimerms(int index) {
     double msValue = 0;
+
     bool ready = true;
     for (int i = 0; i < AVERAGE_VALUES; i++) {
         if (profileTimerValues[index][i] == 0) ready = false;
