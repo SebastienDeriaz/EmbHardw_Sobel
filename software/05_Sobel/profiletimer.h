@@ -4,6 +4,8 @@
 #include <system.h>
 #include <io.h>
 #include <stdbool.h>
+#include "sys/alt_timestamp.h"
+#include "alt_types.h"
 
 #define TIMER_STATUS_REGISTER 0
 #define TIMER_CONTROL_REGISTER 1<<2
@@ -19,9 +21,12 @@
 #define TIMER_START 1<<2
 
 #define CLOCK_PERIOD_MS 0.00002
+#define TIMER_PERIOD_MS 0.000001
 
 
-extern unsigned long profileTimerValue;
+extern alt_u32 profileTimerStartValue;
+extern alt_u32 profileTimerStopValue;
+extern alt_u32 profileTimerValue;
 #define AVERAGE_VALUES 5
 extern int averageIndex;
 extern double profileTimerValues[AVERAGE_VALUES];
