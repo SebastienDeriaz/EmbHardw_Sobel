@@ -21,7 +21,7 @@
    {
       datum baseAddress
       {
-         value = "16781312";
+         value = "16781440";
          type = "String";
       }
    }
@@ -37,7 +37,7 @@
    {
       datum baseAddress
       {
-         value = "16781408";
+         value = "16781376";
          type = "String";
       }
    }
@@ -53,7 +53,7 @@
    {
       datum baseAddress
       {
-         value = "16781440";
+         value = "16781408";
          type = "String";
       }
    }
@@ -85,7 +85,7 @@
    {
       datum baseAddress
       {
-         value = "16781344";
+         value = "16781312";
          type = "String";
       }
    }
@@ -94,6 +94,14 @@
       datum _sortIndex
       {
          value = "0";
+         type = "int";
+      }
+   }
+   element grayscale_0
+   {
+      datum _sortIndex
+      {
+         value = "14";
          type = "int";
       }
    }
@@ -141,7 +149,7 @@
    {
       datum baseAddress
       {
-         value = "16781376";
+         value = "16781344";
          type = "String";
       }
    }
@@ -465,6 +473,7 @@
   <parameter name="inputClockFrequency" value="0" />
   <parameter name="resetSynchronousEdges" value="NONE" />
  </module>
+ <module name="grayscale_0" kind="grayscale" version="1.0" enabled="1" />
  <module name="i2c_ctrl" kind="i2c_master" version="1.0" enabled="1" />
  <module
    name="jtag_uart"
@@ -503,14 +512,14 @@
   <parameter name="cpuArchRev" value="1" />
   <parameter name="cpuID" value="0" />
   <parameter name="cpuReset" value="false" />
-  <parameter name="customInstSlavesSystemInfo" value="&lt;info/&gt;" />
+  <parameter name="customInstSlavesSystemInfo"><![CDATA[<info><slave name="grayscale_0" baseAddress="0" addressSpan="1" clockCycleType="VARIABLE" /></info>]]></parameter>
   <parameter name="customInstSlavesSystemInfo_nios_a" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_b" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_c" value="&lt;info/&gt;" />
   <parameter name="dataAddrWidth" value="25" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='sdram_ctrl.s1' start='0x0' end='0x1000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x1000800' end='0x1001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='LEDS_0.avalon_slave_0' start='0x1001000' end='0x1001020' type='LEDS.avalon_slave_0' /><slave name='cam_ctrl.slave' start='0x1001020' end='0x1001040' type='cam_dma.slave' /><slave name='lcd_ctrl.slave' start='0x1001040' end='0x1001060' type='lcd_dma.slave' /><slave name='ProfileTimer.s1' start='0x1001060' end='0x1001080' type='altera_avalon_timer.s1' /><slave name='Systimer.s1' start='0x1001080' end='0x10010A0' type='altera_avalon_timer.s1' /><slave name='i2c_ctrl.slave' start='0x10010B0' end='0x10010C0' type='i2c_master.slave' /><slave name='pio_0.s1' start='0x10010C0' end='0x10010D0' type='altera_avalon_pio.s1' /><slave name='altpll_0.pll_slave' start='0x10010D0' end='0x10010E0' type='altpll.pll_slave' /><slave name='vga_dma_0.slave' start='0x10010F0' end='0x10010F8' type='vga_dma.slave' /><slave name='sysid.control_slave' start='0x10010F8' end='0x1001100' type='altera_avalon_sysid_qsys.control_slave' /><slave name='jtag_uart.avalon_jtag_slave' start='0x1001100' end='0x1001108' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='sdram_ctrl.s1' start='0x0' end='0x1000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='nios2_gen2_0.debug_mem_slave' start='0x1000800' end='0x1001000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='cam_ctrl.slave' start='0x1001000' end='0x1001020' type='cam_dma.slave' /><slave name='lcd_ctrl.slave' start='0x1001020' end='0x1001040' type='lcd_dma.slave' /><slave name='ProfileTimer.s1' start='0x1001040' end='0x1001060' type='altera_avalon_timer.s1' /><slave name='Systimer.s1' start='0x1001060' end='0x1001080' type='altera_avalon_timer.s1' /><slave name='LEDS_0.avalon_slave_0' start='0x1001080' end='0x10010A0' type='LEDS.avalon_slave_0' /><slave name='i2c_ctrl.slave' start='0x10010B0' end='0x10010C0' type='i2c_master.slave' /><slave name='pio_0.s1' start='0x10010C0' end='0x10010D0' type='altera_avalon_pio.s1' /><slave name='altpll_0.pll_slave' start='0x10010D0' end='0x10010E0' type='altpll.pll_slave' /><slave name='vga_dma_0.slave' start='0x10010F0' end='0x10010F8' type='vga_dma.slave' /><slave name='sysid.control_slave' start='0x10010F8' end='0x1001100' type='altera_avalon_sysid_qsys.control_slave' /><slave name='jtag_uart.avalon_jtag_slave' start='0x1001100' end='0x1001108' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -518,7 +527,7 @@
   <parameter name="dcache_bursts" value="true" />
   <parameter name="dcache_numTCDM" value="0" />
   <parameter name="dcache_ramBlockType" value="Automatic" />
-  <parameter name="dcache_size" value="0" />
+  <parameter name="dcache_size" value="32768" />
   <parameter name="dcache_tagramBlockType" value="Automatic" />
   <parameter name="dcache_victim_buf_impl" value="ram" />
   <parameter name="debug_OCIOnchipTrace" value="_128" />
@@ -734,7 +743,7 @@
    start="nios2_gen2_0.data_master"
    end="LEDS_0.avalon_slave_0">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01001000" />
+  <parameter name="baseAddress" value="0x01001080" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -788,7 +797,7 @@
    start="nios2_gen2_0.data_master"
    end="Systimer.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01001080" />
+  <parameter name="baseAddress" value="0x01001060" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -797,7 +806,7 @@
    start="nios2_gen2_0.data_master"
    end="ProfileTimer.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01001060" />
+  <parameter name="baseAddress" value="0x01001040" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -806,7 +815,7 @@
    start="nios2_gen2_0.data_master"
    end="lcd_ctrl.slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01001040" />
+  <parameter name="baseAddress" value="0x01001020" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -824,7 +833,7 @@
    start="nios2_gen2_0.data_master"
    end="cam_ctrl.slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01001020" />
+  <parameter name="baseAddress" value="0x01001000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -979,6 +988,15 @@
    start="nios2_gen2_0.irq"
    end="ProfileTimer.irq">
   <parameter name="irqNumber" value="5" />
+ </connection>
+ <connection
+   kind="nios_custom_instruction"
+   version="18.1"
+   start="nios2_gen2_0.custom_instruction_master"
+   end="grayscale_0.nios_custom_instruction_slave">
+  <parameter name="CIName" value="grayscale_0" />
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0" />
  </connection>
  <connection
    kind="reset"
