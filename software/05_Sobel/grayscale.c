@@ -44,10 +44,12 @@ void conv_grayscale(void *picture, int width, int height) {
             gray = gray >> 8;
 
 #elif GRAYSCALE_VERSION == 3
-            gray = (rgb >> 2) & 0x3E00;
+            gray = (rgb >> 2) & 0x3E00;   // red
             gray += (rgb << 4) & 0x7E00;  // green
             gray += (rgb << 8) & 0x1F00;  // blue
             gray = gray >> 8;
+#elif GRAYSCALE_VERSION == 4
+            gray = ALT_CI_GRAYSCALE_0(rgb, 0);
 #endif
             IOWR_8DIRECT(grayscale_array, y * width + x, gray);
         }

@@ -5,8 +5,10 @@
  *      Author: theo
  */
 
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <system.h>
 
 #include "io.h"
 #include "optimisationsettings.h"
@@ -228,45 +230,72 @@ void sobel_complete(unsigned char *src, short threshold) {
         result_y += gy_array[2][0] * src[z + 2 * sobel_width];
         result_y += gy_array[2][1] * src[z + 2 * sobel_width + 1];
         result_y += gy_array[2][2] * src[z + 2 * sobel_width + 2];
-#elif INLINING == 5
+#elif INLINING == 5 && SOBEL_CUSTOM == 0
         // x
         const char gx_array[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
         const char gy_array[3][3] = {{1, 2, 1}, {0, 0, 0}, {-1, -2, -1}};
 
         unsigned char *offset = &src[z];
-        unsigned int sobel_width_2 = 2*sobel_width;
-        //result_x += gx_array[0][0] * offset[0];
+        unsigned int sobel_width_2 = 2 * sobel_width;
+        // result_x += gx_array[0][0] * offset[0];
         result_x -= offset[0];
-        //result_x += gx_array[0][2] * offset[2];
+        // result_x += gx_array[0][2] * offset[2];
         result_x += offset[2];
-        //result_x += gx_array[1][0] * offset[sobel_width];
+        // result_x += gx_array[1][0] * offset[sobel_width];
         result_x -= (unsigned short)(offset[sobel_width]) << 1;
-        //result_x += gx_array[1][2] * offset[sobel_width + 2];
-        result_x += (unsigned short)(offset[sobel_width+2]) << 1;
-        //result_x += gx_array[2][0] * offset[2 * sobel_width];
+        // result_x += gx_array[1][2] * offset[sobel_width + 2];
+        result_x += (unsigned short)(offset[sobel_width + 2]) << 1;
+        // result_x += gx_array[2][0] * offset[2 * sobel_width];
         result_x -= offset[sobel_width_2];
-        //result_x += gx_array[2][2] * offset[2 * sobel_width + 2];
-        result_x += offset[sobel_width_2+2];
+        // result_x += gx_array[2][2] * offset[2 * sobel_width + 2];
+        result_x += offset[sobel_width_2 + 2];
         // y
-        //result_y += gy_array[0][0] * offset[0];
+        // result_y += gy_array[0][0] * offset[0];
         result_y += offset[0];
-        //result_y += gy_array[0][1] * offset[1];
+        // result_y += gy_array[0][1] * offset[1];
         result_y += (unsigned short)(offset[1]) << 1;
-        //result_y += gy_array[0][2] * offset[2];
+        // result_y += gy_array[0][2] * offset[2];
         result_y += offset[2];
-        //result_y += gy_array[2][0] * offset[2 * sobel_width];
+        // result_y += gy_array[2][0] * offset[2 * sobel_width];
         result_y -= offset[sobel_width_2];
-        //result_y += gy_array[2][1] * offset[2 * sobel_width + 1];
+        // result_y += gy_array[2][1] * offset[2 * sobel_width + 1];
         result_y -= (unsigned short)(offset[sobel_width_2 + 1]) << 1;
-        //result_y += gy_array[2][2] * offset[2 * sobel_width + 2];
-        result_y -= offset[sobel_width_2+2];
+        // result_y += gy_array[2][2] * offset[2 * sobel_width + 2];
+        result_y -= offset[sobel_width_2 + 2];
+#elif SOBEL_CUSTOM == 1
+        unsigned char *offset = &src[z];
+        unsigned int sobel_width_2 = 2 * sobel_width;
+        uint32_t dataa, datab;
+        // offset[0], offset[1], offset[2], offset[sobel_width],
+        // offset[sobel_width+2], offset[sobel_width_2], offset[sobel_width_2 +
+        // 1], offset[sobel_width_2+2]
+        //
+        // dataa -> offset[0], offset[1], offset[2], offset[sobel_width]
+        // dataa -> offset[sobel_width+2], offset[sobel_width_2],
+        // offset[sobel_width_2 + 1], offset[sobel_width_2+2]
+
+        dataa = (uint32_t)(offset[0] << 24) | (uint32_t)(offset[1] << 16) |
+                (uint32_t)(offset[2] << 8) | (uint32_t)(offset[sobel_width]);
+        datab = offset[sobel_width + 2] << 24 | offset[sobel_width_2] << 16 |
+                offset[sobel_width_2 + 1] << 8 | offset[sobel_width_2 + 2];
+        // dataa = (*((uint32_t *)offset) & 0xFFFFFF00);// |
+        // offset[sobel_width]; datab = (offset[sobel_width + 2] << 24) |
+        //        (*((uint32_t *)&offset[sobel_width_2]) >> 8);
+        
+
+        //printf("dataa : %08X\n", dataa);
+        //printf("datab : %08X\n", datab);
+
+        sobel_result[z] = ALT_CI_SOBEL_0(dataa, datab);
 #endif
 
+#if SOBEL_CUSTOM == 0
         value = result_x;
         sum = (value < 0) ? -value : value;
         value = result_y;
         sum += (value < 0) ? -value : value;
         sobel_result[z] = (sum > threshold) ? 0xFF : 0;
+#endif
     }
 #endif
 }
