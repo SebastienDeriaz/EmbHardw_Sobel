@@ -73,6 +73,14 @@
          type = "String";
       }
    }
+   element base_system
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone IV E";
+         type = "String";
+      }
+   }
    element cam_ctrl
    {
       datum _sortIndex
@@ -199,6 +207,14 @@
       {
          value = "1";
          type = "boolean";
+      }
+   }
+   element sobel_0
+   {
+      datum _sortIndex
+      {
+         value = "15";
+         type = "int";
       }
    }
    element sysid
@@ -512,7 +528,7 @@
   <parameter name="cpuArchRev" value="1" />
   <parameter name="cpuID" value="0" />
   <parameter name="cpuReset" value="false" />
-  <parameter name="customInstSlavesSystemInfo"><![CDATA[<info><slave name="grayscale_0" baseAddress="0" addressSpan="1" clockCycleType="VARIABLE" /></info>]]></parameter>
+  <parameter name="customInstSlavesSystemInfo"><![CDATA[<info><slave name="grayscale_0" baseAddress="0" addressSpan="1" clockCycleType="VARIABLE" /><slave name="sobel_0" baseAddress="1" addressSpan="1" clockCycleType="VARIABLE" /></info>]]></parameter>
   <parameter name="customInstSlavesSystemInfo_nios_a" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_b" value="&lt;info/&gt;" />
   <parameter name="customInstSlavesSystemInfo_nios_c" value="&lt;info/&gt;" />
@@ -720,6 +736,7 @@
   <parameter name="registerDataIn" value="true" />
   <parameter name="rowWidth" value="12" />
  </module>
+ <module name="sobel_0" kind="sobel" version="1.0" enabled="1" />
  <module
    name="sysid"
    kind="altera_avalon_sysid_qsys"
@@ -997,6 +1014,15 @@
   <parameter name="CIName" value="grayscale_0" />
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0" />
+ </connection>
+ <connection
+   kind="nios_custom_instruction"
+   version="18.1"
+   start="nios2_gen2_0.custom_instruction_master"
+   end="sobel_0.nios_custom_instruction_slave">
+  <parameter name="CIName" value="sobel_0" />
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="1" />
  </connection>
  <connection
    kind="reset"
