@@ -19,6 +19,7 @@ void conv_grayscale(void *picture, int width, int height) {
     int x, y;
     unsigned short gray;
     unsigned short *pixels = (unsigned short *)picture, rgb;
+    unsigned short R, G, B;
     grayscale_width = width;
     grayscape_height = height;
     if (grayscale_array != NULL) free(grayscale_array);
@@ -48,7 +49,12 @@ void conv_grayscale(void *picture, int width, int height) {
             gray += (rgb << 4) & 0x7E00;  // green
             gray += (rgb << 8) & 0x1F00;  // blue
             gray = gray >> 8;
-#elif GRAYSCALE_VERSION == 4
+#elif GRAYSCALE_VERSION == 4  // Test version, not for performance
+            R = ((rgb & 0xF800) >> 10) * 30; //11 -1 for additionnal 0
+            G = ((rgb & 0x07E0) >> 5) * 59;
+            B = ((rgb & 0x001F) << 1) * 11;
+            gray = (R + G + B) / 100;
+#elif GRAYSCALE_VERSION == 5
             gray = ALT_CI_GRAYSCALE_0(rgb, 0);
 #endif
             IOWR_8DIRECT(grayscale_array, y * width + x, gray);

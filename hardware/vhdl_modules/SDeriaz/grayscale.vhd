@@ -19,26 +19,31 @@ entity grayscale is
 end grayscale;
 
 architecture comp of grayscale is
+    signal R : std_logic_vector(7 downto 0);
+    signal G : std_logic_vector(7 downto 0);
+    signal B : std_logic_vector(7 downto 0);
 begin
+    R <= dataa(15 downto 11) & "000";
+    G <= dataa(10 downto 5) & "00";
+    B <= dataa(4 downto 0) & "000";
     -- Avalon interfacing
     process (Clk, reset)
-        variable R   : unsigned(10 downto 0); -- max 11 bits
-        variable G   : unsigned(11 downto 0); -- max 12 bits
-        variable B   : unsigned(9 downto 0);  -- max 10 bits
-        variable add : unsigned(31 downto 0); -- 32 bits because of result
+
+        variable add : unsigned(31 downto 0);
     begin
-        R := (others => '0');
-        G := (others => '0');
-        B := (others => '0');
+        add := (others => '0');
         if reset = '1' then
             result <= (others => '0');
         elsif rising_edge(Clk) then
             if (start = '1') then
-                R   := resize(unsigned(dataa(15 downto 0) & '0') * 30, 11);
-                G   := resize(unsigned(dataa(10 downto 5)) * 59, 12);
-                B   := resize(unsigned(dataa(4 downto 0) & '0') * 11, 10);
-                add := resize((R + G + B) / 100, 32);
+                add := resize((unsigned(R) * 30 + unsigned(G) * 59 + unsigned(B) * 11) / 100, 32);
                 result <= std_logic_vector(add);
+                -- gray = (rgb >> 2) & 0x3E00;   // red
+                -- gray += (rgb << 4) & 0x7E00;  // green
+                -- gray += (rgb << 8) & 0x1F00;  // blue
+                -- gray = gray >> 8;
+                -- add := unsigned("00" & R & "00000") + unsigned("00" & G & "000000") + unsigned("00" & B & "000");
+                -- result(8 downto 0) <= std_logic_vector(add)(13 downto 5);
 
                 done   <= '1';
             else

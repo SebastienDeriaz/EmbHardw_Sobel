@@ -149,6 +149,9 @@ void sobel_complete(unsigned char *src, short threshold) {
     int x, y, z;
     short result_x, result_y;
     short sum, value;
+    unsigned char *offset;
+    unsigned int sobel_width_2 = 2 * sobel_width;
+    uint32_t dataa, datab;
 #if INLINING == 2
     for (y = 1; y < (sobel_height - 1); y++) {
         for (x = 1; x < (sobel_width - 1); x++) {
@@ -263,9 +266,9 @@ void sobel_complete(unsigned char *src, short threshold) {
         // result_y += gy_array[2][2] * offset[2 * sobel_width + 2];
         result_y -= offset[sobel_width_2 + 2];
 #elif SOBEL_CUSTOM == 1
-        unsigned char *offset = &src[z];
-        unsigned int sobel_width_2 = 2 * sobel_width;
-        uint32_t dataa, datab;
+
+        offset = &src[z];
+
         // offset[0], offset[1], offset[2], offset[sobel_width],
         // offset[sobel_width+2], offset[sobel_width_2], offset[sobel_width_2 +
         // 1], offset[sobel_width_2+2]
@@ -276,15 +279,9 @@ void sobel_complete(unsigned char *src, short threshold) {
 
         dataa = (uint32_t)(offset[0] << 24) | (uint32_t)(offset[1] << 16) |
                 (uint32_t)(offset[2] << 8) | (uint32_t)(offset[sobel_width]);
+
         datab = offset[sobel_width + 2] << 24 | offset[sobel_width_2] << 16 |
                 offset[sobel_width_2 + 1] << 8 | offset[sobel_width_2 + 2];
-        // dataa = (*((uint32_t *)offset) & 0xFFFFFF00);// |
-        // offset[sobel_width]; datab = (offset[sobel_width + 2] << 24) |
-        //        (*((uint32_t *)&offset[sobel_width_2]) >> 8);
-        
-
-        //printf("dataa : %08X\n", dataa);
-        //printf("datab : %08X\n", datab);
 
         sobel_result[z] = ALT_CI_SOBEL_0(dataa, datab);
 #endif
