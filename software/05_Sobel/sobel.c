@@ -188,11 +188,12 @@ void sobel_complete(unsigned char *src, short threshold) {
         }
     }
 #else
+
+#if INLINING == 3
+    // x
     for (z = 0; z < (sobel_height - 2) * (sobel_width - 2); z++) {
         result_x = 0;
         result_y = 0;
-#if INLINING == 3
-        // x
         result_x += gx_array[0][0] * src[z];
         result_x += gx_array[0][1] * src[z + 1];
         result_x += gx_array[0][2] * src[z + 2];
@@ -212,8 +213,12 @@ void sobel_complete(unsigned char *src, short threshold) {
         result_y += gy_array[2][0] * src[z + 2 * sobel_width];
         result_y += gy_array[2][1] * src[z + 2 * sobel_width + 1];
         result_y += gy_array[2][2] * src[z + 2 * sobel_width + 2];
+    }
 #elif INLINING == 4
-        // x
+    // x
+    for (z = 0; z < (sobel_height - 2) * (sobel_width - 2); z++) {
+        result_x = 0;
+        result_y = 0;
         result_x += gx_array[0][0] * src[z];
         // result_x += gx_array[0][1] * src[z + 1];
         result_x += gx_array[0][2] * src[z + 2];
@@ -233,13 +238,18 @@ void sobel_complete(unsigned char *src, short threshold) {
         result_y += gy_array[2][0] * src[z + 2 * sobel_width];
         result_y += gy_array[2][1] * src[z + 2 * sobel_width + 1];
         result_y += gy_array[2][2] * src[z + 2 * sobel_width + 2];
+    }
 #elif INLINING == 5 && SOBEL_CUSTOM == 0
-        // x
-        const char gx_array[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
-        const char gy_array[3][3] = {{1, 2, 1}, {0, 0, 0}, {-1, -2, -1}};
+    // x
 
-        unsigned char *offset = &src[z];
-        unsigned int sobel_width_2 = 2 * sobel_width;
+    const char gx_array[3][3] = {{-1, 0, 1}, {-2, 0, 2}, {-1, 0, 1}};
+    const char gy_array[3][3] = {{1, 2, 1}, {0, 0, 0}, {-1, -2, -1}};
+
+    unsigned char *offset = &src[z];
+    unsigned int sobel_width_2 = 2 * sobel_width;
+    for (z = 0; z < (sobel_height - 2) * (sobel_width - 2); z++) {
+        result_x = 0;
+        result_y = 0;
         // result_x += gx_array[0][0] * offset[0];
         result_x -= offset[0];
         // result_x += gx_array[0][2] * offset[2];
@@ -265,7 +275,12 @@ void sobel_complete(unsigned char *src, short threshold) {
         result_y -= (unsigned short)(offset[sobel_width_2 + 1]) << 1;
         // result_y += gy_array[2][2] * offset[2 * sobel_width + 2];
         result_y -= offset[sobel_width_2 + 2];
+    }
 #elif SOBEL_CUSTOM == 1
+
+    for (z = 0; z < (sobel_height - 2) * (sobel_width - 2); z++) {
+        result_x = 0;
+        result_y = 0;
 
         offset = &src[z];
 
@@ -284,18 +299,18 @@ void sobel_complete(unsigned char *src, short threshold) {
                 offset[sobel_width_2 + 1] << 8 | offset[sobel_width_2 + 2];
 
         sobel_result[z] = ALT_CI_SOBEL_0(dataa, datab);
+    }
 #endif
 
 #if SOBEL_CUSTOM == 0
-        value = result_x;
-        sum = (value < 0) ? -value : value;
-        value = result_y;
-        sum += (value < 0) ? -value : value;
-        sobel_result[z] = (sum > threshold) ? 0xFF : 0;
-#endif
-    }
+    value = result_x;
+    sum = (value < 0) ? -value : value;
+    value = result_y;
+    sum += (value < 0) ? -value : value;
+    sobel_result[z] = (sum > threshold) ? 0xFF : 0;
 #endif
 }
+#endif
 
 #endif
 
