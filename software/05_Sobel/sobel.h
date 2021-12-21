@@ -8,12 +8,12 @@
 #ifndef SOBEL_H_
 #define SOBEL_H_
 #include "optimisationsettings.h"
-
+#include <stdbool.h>
 
 void init_sobel_arrays(int width , int height);
 void sobel_x_with_rgb( unsigned char *source );
 #if INLINING >= 2
-void sobel_complete(unsigned char* src, short threshold);
+void sobel_complete(unsigned char* src, short threshold, bool use_custom_instructions);
 #else
 void sobel_x( unsigned char *source );
 void sobel_y( unsigned char *source );

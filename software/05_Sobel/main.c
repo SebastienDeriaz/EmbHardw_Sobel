@@ -54,7 +54,7 @@ int main() {
                     case 1:
                         startProfileTimer(TIMER_CONV_GRAYSCALE);
                         conv_grayscale((void *)image, cam_get_xsize() >> 1,
-                                       cam_get_ysize());
+                                       cam_get_ysize(), false);
                         stopProfileTimer(TIMER_CONV_GRAYSCALE);
                         grayscale = get_grayscale_picture();
                         transfer_LCD_with_dma(&grayscale[16520],
@@ -68,7 +68,7 @@ int main() {
                     case 2:
                         startProfileTimer(TIMER_CONV_GRAYSCALE);
                         conv_grayscale((void *)image, cam_get_xsize() >> 1,
-                                       cam_get_ysize());
+                                       cam_get_ysize(), false);
                         stopProfileTimer(TIMER_CONV_GRAYSCALE);
                         grayscale = get_grayscale_picture();
                         startProfileTimer(TIMER_SOBEL_X);
@@ -86,7 +86,7 @@ int main() {
                     case 3:
                         startProfileTimer(TIMER_CONV_GRAYSCALE);
                         conv_grayscale((void *)image, cam_get_xsize() >> 1,
-                                       cam_get_ysize());
+                                       cam_get_ysize(), false);
                         stopProfileTimer(TIMER_CONV_GRAYSCALE);
                         grayscale = get_grayscale_picture();
                         startProfileTimer(TIMER_SOBEL_X);
@@ -106,10 +106,11 @@ int main() {
                             vga_set_pointer(image);
                         }
                         break;
-                    default:
+                    case 4:
+                    case 5:
                         startProfileTimer(TIMER_CONV_GRAYSCALE);
                         conv_grayscale((void *)image, cam_get_xsize() >> 1,
-                                       cam_get_ysize());
+                                       cam_get_ysize(), mode == 5);
                         stopProfileTimer(TIMER_CONV_GRAYSCALE);
 
                         grayscale = get_grayscale_picture();
@@ -128,7 +129,7 @@ int main() {
                         stopProfileTimer(TIMER_SOBEL_THRESHOLD);
 #else
                         startProfileTimer(TIMER_SOBEL_X);
-                        sobel_complete(grayscale, 128);
+                        sobel_complete(grayscale, 128, mode == 5);
                         stopProfileTimer(TIMER_SOBEL_X);
 #endif
 
