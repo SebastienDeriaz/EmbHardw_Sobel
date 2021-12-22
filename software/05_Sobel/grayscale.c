@@ -84,7 +84,7 @@ void conv_grayscale(void *picture, int width, int height,
         }
     }
 #elif GRAYSCALE_VERSION == 5
-    // Custom instructions
+    // single for loop with or without custom instructions (depends on parameter)
     int z;
     if (use_custom_instructions) {
         for (z = 0; z < height * width; z++) {
