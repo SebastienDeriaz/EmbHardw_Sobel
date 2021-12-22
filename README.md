@@ -67,7 +67,7 @@ Les optimisations seront présentée dans l'ordre dans lequel elles ont été ap
 
 #### Unrolling
 
-Les boucles de 3 éléments utilisées pour les masques sont supprimées. Ce qui donne 2*9 lignes de codes (pour x et y)
+Les boucles de 3 éléments utilisées pour les masques sont supprimées. Ce qui donne 2*9 lignes de code (pour x et y)
 
 #### Inlining + sobel_complete
 
@@ -76,8 +76,9 @@ Les fonctions sont supprimées et une seule fonction ``sobel_complete`` est util
 1) Combinaison des boucles for sur ``x`` et ``y`` en une seule boucle ``z``
 2) Suppression des lignes où ``gx_array=0`` et ``gy_array=0``
 3) Suppression des tableaux ``gx_array`` et ``gy_array`` (valeurs hard-codées)
+4) Suppression des tableaux de résultats pour ``x`` et ``y`` et remplacement par des valeurs simples (car il n'y a plus besoin de passer les valeurs à ``sobel_threshold``)
 
 #### Custom instructions
 
 Les 8 pixels (celui du centre est ignoré car multiplié par 0) sont transmis d'un coup dans ``dataa`` et ``datab``.<br>
-L'instruction custom effectue le masque sur x, sur y et le threshold. Le resultat est directement remis dans le tableau de sortie
+L'instruction custom effectue le masque sur x, sur y et le threshold. Le resultat est directement remis dans le tableau de sortie via le retour de la fonction
