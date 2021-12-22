@@ -60,10 +60,10 @@ begin
     P21                 <= datab(15 downto 8);
     P22                 <= datab(7 downto 0);
     -- X mask
-    result_x            <= - signed(P00) + signed(P02) - 2 * signed(P10) + 2 * signed(P12) - signed(P20) + signed(P22);
+    result_x            <= - signed(P00) + signed(P02) - to_signed(2,8) * signed(P10) + to_signed(2,8) * signed(P12) - signed(P20) + signed(P22);
     -- Y mask
-    result_y            <= signed(P00) + 2 * signed(P01) + signed(P02) - signed(P20) - signed(P21) - signed(P22);
-    sum                 <= result_x + result_y;
+    result_y            <= signed(P00) + to_signed(2,8) * signed(P01) + signed(P02) - signed(P20) - to_signed(2,8) * signed(P21) - signed(P22);
+    sum                 <= abs(result_x) + abs(result_y);
 
     result(31 downto 8) <= (others => '0');
     result(7 downto 0)  <= x"FF" when (sum > threshold) else
