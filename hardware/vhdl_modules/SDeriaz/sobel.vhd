@@ -34,31 +34,42 @@ end sobel;
 architecture comp of sobel is
     constant threshold : signed(8 downto 0) := to_signed(127, 9);
 
-    signal P00         : std_logic_vector(7 downto 0); -- x(-1)  y(1)
-    signal P01         : std_logic_vector(7 downto 0); -- x(0)   y(2)
-    signal P02         : std_logic_vector(7 downto 0); -- x(1)   y(1)
-    signal P10         : std_logic_vector(7 downto 0); -- x(-2)  y(0)
-    signal P12         : std_logic_vector(7 downto 0); -- x(2)   y(0)
-    signal P20         : std_logic_vector(7 downto 0); -- x(-1)  y(-1)
-    signal P21         : std_logic_vector(7 downto 0); -- x(0)   y(-2)
-    signal P22         : std_logic_vector(7 downto 0); -- x(1)   y(-1)
-    signal result_x    : signed(15 downto 0);
-    signal result_y    : signed(15 downto 0);
-    signal sum         : signed(15 downto 0);
+    signal P00         : std_logic_vector(8 downto 0); -- x(-1)  y(1)
+    signal P01         : std_logic_vector(8 downto 0); -- x(0)   y(2)
+    signal P02         : std_logic_vector(8 downto 0); -- x(1)   y(1)
+    signal P10         : std_logic_vector(8 downto 0); -- x(-2)  y(0)
+    signal P12         : std_logic_vector(8 downto 0); -- x(2)   y(0)
+    signal P20         : std_logic_vector(8 downto 0); -- x(-1)  y(-1)
+    signal P21         : std_logic_vector(8 downto 0); -- x(0)   y(-2)
+    signal P22         : std_logic_vector(8 downto 0); -- x(1)   y(-1)
+    signal result_x    : signed(16 downto 0);
+    signal result_y    : signed(16 downto 0);
+    signal sum         : signed(16 downto 0);
 
 begin
     -- Sobel
 
+    -- MSB is 0 so that signed is always positive
+    P00(8) <= '0';
+    P01(8) <= '0';
+    P02(8) <= '0';
+    P10(8) <= '0';
+    P12(8) <= '0';
+    P20(8) <= '0';
+    P21(8) <= '0';
+    P22(8) <= '0';
+
+    -- Settings MSB-1 downto LSB
     -- dataa -> P00, P01, P02, P10
-    P00                 <= dataa(31 downto 24);
-    P01                 <= dataa(23 downto 16);
-    P02                 <= dataa(15 downto 8);
-    P10                 <= dataa(7 downto 0);
+    P00(7 downto 0)                 <= dataa(31 downto 24);
+    P01(7 downto 0)                 <= dataa(23 downto 16);
+    P02(7 downto 0)                 <= dataa(15 downto 8);
+    P10(7 downto 0)                 <= dataa(7 downto 0);
     -- datab -> P12, P20, P21, P22
-    P12                 <= datab(31 downto 24);
-    P20                 <= datab(23 downto 16);
-    P21                 <= datab(15 downto 8);
-    P22                 <= datab(7 downto 0);
+    P12(7 downto 0)                 <= datab(31 downto 24);
+    P20(7 downto 0)                 <= datab(23 downto 16);
+    P21(7 downto 0)                 <= datab(15 downto 8);
+    P22(7 downto 0)                 <= datab(7 downto 0);
     -- X mask
     result_x            <= - signed(P00) + signed(P02) - to_signed(2,8) * signed(P10) + to_signed(2,8) * signed(P12) - signed(P20) + signed(P22);
     -- Y mask
