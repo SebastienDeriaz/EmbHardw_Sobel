@@ -1,10 +1,13 @@
 # Labo04
+
 ## Leds
+
 Ajout des Leds de ``pins_all.tcl`` dans ``pins.tcl``
 
 
 
 ## Conversion RGB -> grayscale
+
 1) Red : 5 bits
 2) Green : 6 bits
 3) Blue : 5 bits
