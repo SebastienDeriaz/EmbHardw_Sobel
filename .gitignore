@@ -24,3 +24,4 @@ hardware/quartus_project/base_system/*
 hardware/quartus_project/mse_demo.qws
 .vscode/settings.json
 ~$Temps.xlsx
+~$Measurements.xlsx
